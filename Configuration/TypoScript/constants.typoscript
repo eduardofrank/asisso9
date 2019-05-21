@@ -1,0 +1,60 @@
+######################
+#### DEPENDENCIES ####
+######################
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bootstrap_package/Configuration/TypoScript/constants.typoscript">
+
+
+############
+### PAGE ###
+############
+page {
+    logo {
+        file = EXT:asisso9/Resources/Public/Images/logo.svg
+        fileInverted = EXT:asisso9/Resources/Public/Images/logo-inverted.svg
+        height = 52
+        width = 192
+        alt = asisso9
+        linktitle = asisso9
+    }
+    favicon {
+        file = EXT:asisso9/Resources/Public/Icons/favicon.ico
+    }
+    fluidtemplate {
+        layoutRootPath = EXT:asisso9/Resources/Private/Layouts/Page/
+        partialRootPath = EXT:asisso9/Resources/Private/Partials/Page/
+        templateRootPath = EXT:asisso9/Resources/Private/Templates/Page/
+    }
+}
+
+
+##################
+### EXTENSIONS ###
+##################
+plugin.bootstrap_package {
+    view {
+        layoutRootPath = EXT:asisso9/Resources/Private/Layouts/
+        partialRootPath = EXT:asisso9/Resources/Private/Partials/
+        templateRootPath = EXT:asisso9/Resources/Private/Templates/
+    }
+}
+
+
+########################
+### CONTENT ELEMENTS ###
+########################
+plugin.bootstrap_package_contentelements {
+    view {
+        layoutRootPath = EXT:asisso9/Resources/Private/Layouts/ContentElements/
+        partialRootPath = EXT:asisso9/Resources/Private/Partials/ContentElements/
+        templateRootPath = EXT:asisso9/Resources/Private/Templates/ContentElements/
+    }
+}
+
+
+################################
+### BOOTSTRAP SCSS CONSTANTS ###
+################################
+plugin.bootstrap_package.settings.scss {
+    primary = #eb3e4a
+    secondary = #013859
+}
