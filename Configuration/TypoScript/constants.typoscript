@@ -10,11 +10,10 @@
 page {
     logo {
         file = EXT:asisso9/Resources/Public/Images/logo.svg
-        fileInverted = EXT:asisso9/Resources/Public/Images/logo-inverted.svg
-        height = 52
-        width = 192
-        alt = asisso9
-        linktitle = asisso9
+        height = 56
+        width = 185
+        alt = Alberto Sisso
+        linktitle = asisso
     }
     favicon {
         file = EXT:asisso9/Resources/Public/Icons/favicon.ico
@@ -50,11 +49,24 @@ plugin.bootstrap_package_contentelements {
     }
 }
 
-
 ################################
 ### BOOTSTRAP SCSS CONSTANTS ###
 ################################
 plugin.bootstrap_package.settings.scss {
+    grid-float-breakpoint = 9999px
     primary = #eb3e4a
     secondary = #013859
 }
+
+#############################################
+## From here onward added by Eduardo Frank ##
+#############################################
+
+plugin.tx_news {
+    view.twb {
+                templateRootPath = EXT:asisso9/Resources/Private/Templates/Styles/Twb/Templates
+                partialRootPath = EXT:asisso9/Resources/Private/Templates/Styles/Twb/Partials/
+                layoutRootPath = EXT:asisso9/Resources/Private/Templates/Styles/Twb/Layouts/
+            }
+}
+
