@@ -746,6 +746,15 @@ ul.nav {
     margin-right: 0;
     margin-left: 0;
 }
+.news .col-md-5 {
+    padding-right:0;
+}
+.news .col-md-7 {
+    padding-left:0;
+}
+.news .col-md-12 .frame-container {
+    padding:0;
+}
 }
 
 /*** Greater than 992, less then 1200 ***/
@@ -794,6 +803,15 @@ ul.nav {
     margin-right: 0;
     margin-left: 0;
 }
+.news .col-md-5 {
+    padding-right:0;
+}
+.news .col-md-7 {
+    padding-left:0;
+}
+.news .frame-container {
+    padding:0;
+}
 }
 
 /*** Greater than 768, less then 991 ***/
@@ -823,6 +841,12 @@ ul.nav {
     margin-right: 0;
     margin-left: 0;
     margin-bottom:15px;
+}
+.news .col-md-5 {
+    padding-right:0;
+}
+.news .col-md-7 {
+    padding-left:0;
 }
 }
 
@@ -860,6 +884,12 @@ ul.nav {
     width:100%;
     object-fit: cover;
 }
+.news .col-md-5 {
+    padding:0;
+}
+.news .col-md-7 {
+    padding:0;
+}
 }
 
 /*** Less then 480 ***/
@@ -895,6 +925,12 @@ ul.nav {
     border-style: none;
     width:100%;
     object-fit: cover;
+}
+.news .col-md-5 {
+    padding:0;
+}
+.news .col-md-7 {
+    padding:0;
 }
 }
 
