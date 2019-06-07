@@ -82,3 +82,51 @@ page {
 	}
 }
     
+plugin.tx_seo.config {
+  xmlSitemap {
+    sitemaps {
+      blog {
+        provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
+        config {
+          table = tx_news_domain_model_news
+          sortField = sorting
+          lastModifiedField = tstamp
+          pid = 18
+          recursive = 2
+          url {
+            pageId = 6
+            fieldToParameterMap {
+              uid = tx_news_pi1[news]
+            }
+            additionalGetParameters {
+              tx_news_pi1.controller = News
+              tx_news_pi1.action = detail
+            }
+            useCacheHash = 1
+          }
+        }
+      }
+      woks {
+        provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
+        config {
+          table = tx_news_domain_model_news
+          sortField = sorting
+          lastModifiedField = tstamp
+          pid = 9
+          recursive = 2
+          url {
+            pageId = 5
+            fieldToParameterMap {
+              uid = tx_news_pi1[news]
+            }
+            additionalGetParameters {
+              tx_news_pi1.controller = News
+              tx_news_pi1.action = detail
+            }
+            useCacheHash = 1
+          }
+        }
+      }
+    }
+  }
+}

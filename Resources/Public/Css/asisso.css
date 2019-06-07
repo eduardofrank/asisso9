@@ -654,11 +654,13 @@ ul.nav {
 }
 
 #p5 .lead,
+#p6 .lead,
 #p28 .lead {
   display:none;
 }
     
-#p8 .caption,
+#p5 .caption,
+#p6 .caption,
 #p27 .caption {
     display:none;
 }
@@ -734,6 +736,14 @@ ul.nav {
 .textpic-gallery {
     padding:0;
     flex:0 0 49%;
+}
+.news .textpic-text {
+    padding:0;
+    flex:0 0 100%;
+}
+.news .textpic-gallery {
+    padding:0;
+    flex:0 0 100%;
 }
 .textpic-text {
     padding:0;
