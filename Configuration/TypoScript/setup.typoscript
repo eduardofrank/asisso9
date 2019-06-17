@@ -49,39 +49,9 @@ module.tx_form.settings.yamlConfigurations.100 = EXT:asisso9/Configuration/Form/
 lib.sm-logo = TEXT
 lib.sm-logo.value = /typo3conf/ext/asisso9/Resources/Public/Images/logo_menu.svg
 
+plugin.tx_news.settings.detail.checkPidOfNewsRecord = 1
 
-page {
-    10 = FLUIDTEMPLATE
-    10 {
-	dataProcessing {
-                30 {
-                special = rootline
-                special.range = 1|-1
-                includeNotInMenu = 1
-                as = breadcrumb
-                if {
-                    value = {$page.theme.breadcrumb.enableLevel}
-                    value {
-                        insertData = 1
-                        prioriCalc = 1
-                        stdWrap.wrap = |-1
-                    }
-                    isGreaterThan {
-                        data = level
-                    }
-                }
-                dataProcessing {
-                    10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
-                    10 {
-                        references.fieldName = nav_icon
-                        as = icon
-                    }
-                }
-            }
-	    }
-	}
-}
-    
+
 plugin.tx_seo.config {
   xmlSitemap {
     sitemaps {
