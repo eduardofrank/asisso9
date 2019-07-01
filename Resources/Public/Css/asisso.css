@@ -1,3 +1,13 @@
+body, .body-bg {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.main-section {
+  flex:1;
+}
+
 p, h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, li, li a {
   font-family: "Titillium Web", sans serif;
 }
@@ -588,6 +598,9 @@ ul.nav {
 /** BREADCRUMB MENU  **/
 /**********************/
 
+#p10 .breadcrumb {
+    display:none;
+}
 
 .breadcrumb-section {
     background-color: transparent;
@@ -969,6 +982,7 @@ ul.nav {
 /**********************/
 /***     FOOTER     ***/
 /**********************/
+
 
 .footer-section-content {
     padding:0;
