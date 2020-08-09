@@ -2,14 +2,17 @@ body, .body-bg {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  margin:0;
+  padding:0;
+  background-color:none;
 }
 
-.main-section {
+/*.main-section {
   flex:1;
-}
+}*/
 
 p, h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, li, li a {
-  font-family: "Titillium Web", sans serif;
+  font-family: 'Mulish', sans-serif;
 }
 
 a {
@@ -35,6 +38,13 @@ a:hover {
     padding-right:20px;
 }
 
+#p3 figure .caption {
+    padding-top: 0.5rem;
+    font-size: 0.85rem;
+    word-wrap: break-word;
+    opacity: 0.8;
+    text-align: right;
+}
  
 
 /**********************/
@@ -609,6 +619,7 @@ ul.nav {
 .breadcrumb {
     display: flex;
     flex-wrap: wrap;
+    justify-content:flex-end;
     padding: 0.75rem 1rem;
     margin-bottom: 1rem;
     list-style: none;
@@ -616,6 +627,7 @@ ul.nav {
 }
 
 /** END OF BREADCRUMB MENU  **/
+
 
 /**********************/
 /**       FORM       **/
@@ -666,16 +678,18 @@ ul.nav {
   padding-left:0;
 }
 
-#p5 .lead,
 #p6 .lead,
-#p28 .lead {
+#p8 .lead,
+#p29 .lead{
   display:none;
 }
     
-#p5 .caption,
 #p6 .caption,
-#p27 .caption {
-    display:none;
+#p8 .caption,
+#p29 .caption,
+#p30 .caption,
+#p31 .caption {
+  display:none;
 }
 
 .news .textpic-item {
@@ -982,7 +996,10 @@ ul.nav {
 /**********************/
 /***     FOOTER     ***/
 /**********************/
-
+/** sticky footer **/
+#page-footer {
+    margin-top: auto;
+}
 
 .footer-section-content {
     padding:0;
@@ -1032,3 +1049,23 @@ footer .frame {
 }
 
 /**  END OF FOOTER   **/
+
+/**********************/
+/*****   CARDS   ******/
+/**********************/
+
+.card-footer {
+    display: none;
+}
+
+.card-group-element-item .card-title {
+    font-size: 1.5rem;
+}
+
+#p5 .frame-type-card_group {
+    height: calc(100vh - (100vh / 2.5));
+    display: flex;
+    align-items: center;
+}
+
+/** END OF CARDS  **/

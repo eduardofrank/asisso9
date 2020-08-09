@@ -10,7 +10,7 @@
 ##############
 page {
     includeCSSLibs {
-        googlewebfont = https://fonts.googleapis.com/css?family=Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900
+        googlewebfont = https://fonts.googleapis.com/css?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800
     }
     includeCSS {
         theme = EXT:asisso9/Resources/Public/Scss/Theme/theme.scss
@@ -50,9 +50,11 @@ module.tx_form.settings.yamlConfigurations.100 = EXT:asisso9/Configuration/Form/
 lib.sm-logo = TEXT
 lib.sm-logo.value = /typo3conf/ext/asisso9/Resources/Public/Images/logo_menu.svg
 
+
 plugin.tx_news.settings.detail.checkPidOfNewsRecord = 1
 
 
+#### SEO CONFIGURATION ###
 plugin.tx_seo.config {
   xmlSitemap {
     sitemaps {
@@ -77,7 +79,7 @@ plugin.tx_seo.config {
           }
         }
       }
-      woks {
+      fine-art {
         provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
         config {
           table = tx_news_domain_model_news
@@ -86,7 +88,7 @@ plugin.tx_seo.config {
           pid = 9
           recursive = 2
           url {
-            pageId = 5
+            pageId = 8
             fieldToParameterMap {
               uid = tx_news_pi1[news]
             }
@@ -98,6 +100,76 @@ plugin.tx_seo.config {
           }
         }
       }
+      documentary-photography {
+        provider = TYPO3\CMS\Seo\XmlSitemap\RecordsXmlSitemapDataProvider
+        config {
+          table = tx_news_domain_model_news
+          sortField = sorting
+          lastModifiedField = tstamp
+          pid = 9
+          recursive = 2
+          url {
+            pageId = 29
+            fieldToParameterMap {
+              uid = tx_news_pi1[news]
+            }
+            additionalGetParameters {
+              tx_news_pi1.controller = News
+              tx_news_pi1.action = detail
+            }
+            useCacheHash = 1
+          }
+        }
+      }    
     }
   }
 }
+
+#### GETS RID OF THE ROOT IN THE BREADCRUMB MENU ####
+page {
+    10 = FLUIDTEMPLATE
+    10 {
+	dataProcessing {
+                30 {
+                special = rootline
+                special.range = 1|-1
+                includeNotInMenu = 1
+                as = breadcrumb
+                if {
+                    value = {$page.theme.breadcrumb.enableLevel}
+                    value {
+                        insertData = 1
+                        prioriCalc = 1
+                        stdWrap.wrap = |-1
+                    }
+                    isGreaterThan {
+                        data = level
+                    }
+                }
+                dataProcessing {
+                    10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+                    10 {
+                        references.fieldName = nav_icon
+                        as = icon
+                    }
+                }
+            }
+        }
+    }
+}
+
+#### ADDS NEWS TITLE TO BREADCRUMB MENU ####
+[request.getQueryParams()['tx_news_pi1'] && request.getQueryParams()['tx_news_pi1']['news'] > 0]
+page {
+    10 {
+        variables {
+            breadcrumbExtendedValue = TEXT
+            breadcrumbExtendedValue {
+                dataWrap = DB:tx_news_domain_model_news:{GP:tx_news_pi1|news}:title
+                wrap3 = {|}
+                insertData = 1
+            }
+        }
+    }
+}
+[global]

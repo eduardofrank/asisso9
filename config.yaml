@@ -1,6 +1,10 @@
-rootPageId: 1
 base: 'https://albertosisso.com'
 baseVariants: {  }
+errorHandling:
+  -
+    errorCode: '404'
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=32'
 languages:
   -
     title: English
@@ -14,22 +18,14 @@ languages:
     hreflang: en-US
     direction: ltr
     flag: us
-errorHandling: {  }
-routes:
-  -
-    route: sitemap.xml
-    type: uri
-    source: 'https://albertosisso.com/?type=1533906435'
-  -
-    route: robots.txt
-    type: staticText
-    content: "User-agent:*\r\nDisallow:/contact/thanks\r\nDisallow:/typo3/\r\n"
+rootPageId: 1
 routeEnhancers:
   NewsList:
     type: Extbase
     limitToPages:
-      - 5
       - 6
+      - 8
+      - 29
     extension: News
     plugin: Pi1
     routes:
@@ -51,8 +47,9 @@ routeEnhancers:
   NewsDetail:
     type: Extbase
     limitToPages:
-      - 5
       - 6
+      - 8
+      - 29
     extension: News
     plugin: Pi1
     routes:
@@ -69,3 +66,12 @@ routeEnhancers:
         type: PersistedAliasMapper
         tableName: tx_news_domain_model_news
         routeFieldName: path_segment
+routes:
+  -
+    route: sitemap.xml
+    type: uri
+    source: 'https://albertosisso.com/?type=1533906435'
+  -
+    route: robots.txt
+    type: staticText
+    content: "User-agent:*\r\nDisallow:/contact/thanks\r\nDisallow:/typo3/\r\n"
