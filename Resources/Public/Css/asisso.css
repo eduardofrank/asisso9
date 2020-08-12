@@ -85,7 +85,7 @@ a:hover {
 }
 
 .navbar li, .navbar li a {
-  font-family: "Titillium Web", sans serif;
+  font-family: 'Mulish', sans-serif;
   letter-spacing:0.125em;
 }
 
@@ -287,7 +287,7 @@ ul.nav navbar-nav navbar-main li.active {
 }
 .navbar-header-main .navbar-brand.navbar-brand-image>img {
     position: relative;
-    top:0;
+    top:40px;
     left:0;
     max-height:100%;
     width: auto;

@@ -13,19 +13,21 @@
 	<f:if condition="{newsItem}">
 		<n:format.nothing>
 			<n:excludeDisplayedNews newsItem="{newsItem}" />
-			<f:if condition="{newsItem.alternativeTitle}">
-				<f:then>
-					<n:titleTag>
-						<f:format.htmlentitiesDecode>{newsItem.alternativeTitle}</f:format.htmlentitiesDecode>
-					</n:titleTag>
-				</f:then>
-				<f:else>
-					<n:titleTag>
-						<f:format.htmlentitiesDecode>{newsItem.title}</f:format.htmlentitiesDecode>
-					</n:titleTag>
-				</f:else>
+			<f:if condition="{settings.detail.showMetaTags}">
+				<f:render partial="Detail/Opengraph" arguments="{newsItem: newsItem, settings:settings}" />
 			</f:if>
-			<f:render partial="Detail/Opengraph" arguments="{newsItem: newsItem, settings:settings}" />
+            <f:if condition="{newsItem.alternativeTitle}">
+                <f:then>
+                    <n:titleTag>
+                        <f:format.htmlentitiesDecode>{newsItem.alternativeTitle}</f:format.htmlentitiesDecode>
+                    </n:titleTag>
+                </f:then>
+                <f:else>
+                    <n:titleTag>
+                        <f:format.htmlentitiesDecode>{newsItem.title}</f:format.htmlentitiesDecode>
+                    </n:titleTag>
+                </f:else>
+            </f:if>
 		</n:format.nothing>
 
 		<f:if condition="{settings.detail.showPrevNext}">
@@ -51,7 +53,7 @@
 			</n:simplePrevNext>
 		</f:if>
 
-		<f:if condition="{newsItem.media}">
+		<f:if condition="{newsItem.mediaNonPreviews}">
 			<f:then>
 				<f:render section="headline" arguments="{_all}" />
 				<div class="row">
@@ -59,7 +61,7 @@
 						<f:render section="inner-content" arguments="{_all}" />
 					</div>
 					<div class="col-md-5">
-						<f:for each="{newsItem.media}" as="mediaElement">
+						<f:for each="{newsItem.mediaNonPreviews}" as="mediaElement">
 							<div class="thumbnail">
 								<f:media file="{mediaElement}" class="img-responsive" />
 								<f:if condition="{mediaElement.description}">
@@ -71,11 +73,11 @@
 						</f:for>
 					</div>
 				</div>
-        <div class="row">
-          <div class="col-md-12">
-            <f:render section="outer-content" arguments="{_all}" />
-          </div>
-        </div>
+            <div class="row">
+              <div class="col-md-12">
+                <f:render section="outer-content" arguments="{_all}" />
+              </div>
+            </div>
 			</f:then>
 			<f:else>
 				<f:render section="headline" arguments="{_all}" />
@@ -105,7 +107,6 @@
 		</div>
 	</n:renderMedia>
 
-
 	<f:comment>
 	<f:if condition="{settings.backPid}">
 		<!-- Link Back -->
@@ -113,14 +114,7 @@
 			<f:translate key="back-link" />
 		</f:link.page>
 	</f:if>
-        </f:comment>
-
-	<f:if condition="{settings.backPid}">
-		<!-- Link Back -->
-		<f:link.page class="back_arrow" pageUid="{settings.backPid}">
-			<span class="texticon-inner-icon ion ion-ios-arrow-left"></span>
-		</f:link.page>
-	</f:if>
+	</f:comment>
 
 	<f:if condition="{settings.detail.showSocialShareButtons}">
 		<f:comment>
@@ -133,14 +127,15 @@
 		</n:extensionLoaded>
 	</f:if>
 
-	<f:if condition="{settings.detail.disqusShortname}">
-		<div id="disqus_thread"></div>
-		<n:social.disqus newsItem="{newsItem}"
-						 shortName="{settings.detail.disqusShortname}"
-						 link="{n:link(newsItem:newsItem, settings:settings, uriOnly:1, configuration:'{forceAbsoluteUrl:1}')}" />
-	</f:if>
 
-
+	<f:comment>
+		Various options exist to fetch different related information:
+		- {newsItem.allRelatedSorted}: all related news, related und related from, sorted by date
+		- {newsItem.related}: all related
+		- {newsItem.relatedSorted}: all related, sorted by date
+		- {newsItem.relatedFrom}: all related from
+		- {newsItem.relatedFromSorted}: all related from, sorted by date
+	</f:comment>
 	<f:if condition="{newsItem.allRelatedSorted}">
 		<!-- Related news records -->
 		<div class="news-related news-related-news">
@@ -194,7 +189,7 @@
 			<ul>
 				<f:for each="{newsItem.relatedLinks}" as="relatedLink">
 					<li>
-						<f:link.page pageUid="{relatedLink.uri}" title="{relatedLink.title}" target="{n:targetLink(link:relatedLink.uri)}">{f:if(condition: relatedLink.title, then: relatedLink.title, else: relatedLink.uri)}</f:link.page>
+						<f:link.typolink parameter="{relatedLink.uri}" title="{relatedLink.title}" target="{n:targetLink(link:relatedLink.uri)}">{f:if(condition: relatedLink.title, then: relatedLink.title, else: relatedLink.uri)}</f:link.typolink>
 						<f:if condition="{relatedLink.description}"><span>{relatedLink.description}</span>
 						</f:if>
 					</li>
