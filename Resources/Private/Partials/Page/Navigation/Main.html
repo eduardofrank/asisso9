@@ -5,6 +5,7 @@
 <f:variable name="headerClass">{headerClass}{f:if(condition: theme.navigation.type, else:' navbar-top', then:' navbar-{theme.navigation.type} navbar-fixed-{theme.navigation.type}')}</f:variable>
 <header id="page-header" class="{headerClass}">
     <div class="container">
+        <f:comment>
         <div id="smallmenu" class="navbar-header navbar-header-main">
         <f:link.page pageUid="{rootPage}" class="navbar-brand navbar-brand-{f:if(condition: logo.normal, then: 'image', else: 'text')}" title="{settings.logo.linktitle}">
             <f:if condition="{logo.normal}">
@@ -25,6 +26,7 @@
             </button>
         </f:if>
         </div>
+        </f:comment>
         <f:link.page pageUid="{rootPage}" class="navbar-brand navbar-brand-{f:if(condition: logo.normal, then: 'image', else: 'text')}" title="{settings.logo.linktitle}">
             <f:if condition="{logo.normal}">
                 <f:then>
@@ -43,6 +45,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <nav id="mainnavigation" class="collapse navbar-collapse">
+                <f:comment>
             	<div class="inmenu_logo">
             <f:if condition="{logo.normal}">
                 <f:then>
@@ -56,6 +59,7 @@
                 </f:else>
             </f:if>
             	</div>
+            	</f:comment>
                 <f:render partial="DropIn/Navigation/MainBefore" arguments="{_all}" />
                 <f:render section="MainNavigation" arguments="{menu: mainnavigation, theme: theme}" />
                 <f:render partial="DropIn/Navigation/MainAfter" arguments="{_all}" />
