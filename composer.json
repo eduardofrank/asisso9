@@ -15,5 +15,11 @@
         "psr-4": {
             "EduardoFrank\\Asisso9\\": "Classes/"
         }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "asisso9"
+        }
     }
+
 }

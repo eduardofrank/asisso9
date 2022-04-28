@@ -332,7 +332,6 @@ ul.nav navbar-nav navbar-main li.active {
 #p7 .main-section {
     display: flex;
     align-items: center;
-    flex: 1;
     justify-content: center;
 }
 
